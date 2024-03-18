@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "compscigen.helloWorld",
-        "title": "Hello World"
+        "command": "compscigen.generate",
+        "title": "compscigen: generate submission"
       }
     ]
   },
