@@ -2,6 +2,7 @@
   "name": "compscigen",
   "displayName": "compscigen",
   "description": "Generates formatted HTML for submitting lab work to certain CS courses",
+  "repository": "https://github.com/GuterBenutzername/compscigen",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.87.0"
@@ -21,6 +22,11 @@
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "pnpm run esbuild-base --sourcemap",
+    "esbuild-watch": "pnpm run esbuild-base --sourcemap --watch",
+    "package": "pnpm vsce package --no-dependencies",
+    "publish": "pnpm vsce publish --no-dependencies",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
@@ -28,14 +34,15 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.87.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.6",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
   }
 }
